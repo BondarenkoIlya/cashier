@@ -49,7 +49,7 @@ public class ProductDao extends DaoEntity implements Dao<Product> {
             resultSet.close();
         } catch (SQLException e) {
             LOG.error("Get exception while working with product creating om dao layer");
-            throw new DaoException("Cannot create statement for creating new comment", e);
+            throw new DaoException("Cannot create statement for creating new product", e);
         }
         return product;
     }
@@ -99,7 +99,7 @@ public class ProductDao extends DaoEntity implements Dao<Product> {
             preparedStatement.execute();
         } catch (SQLException e) {
             LOG.error("Get exception while working with product updating on dao layer");
-            throw new DaoException("Cannot create statement for creating new comment", e);
+            throw new DaoException("Cannot create statement for creating new order", e);
         }
     }
 
