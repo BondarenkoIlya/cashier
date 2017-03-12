@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <GridPane prefHeight="400.0" prefWidth="600.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="496.0" minWidth="10.0" prefWidth="496.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="104.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="332.0" minHeight="10.0" prefHeight="331.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="Продукты в наличии">
+                    <font>
+                        <Font size="38.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="20.0" />
+                    </GridPane.margin>
+                </Label>
+                <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                    <columns>
+                        <TableColumn prefWidth="212.0" text="Название" />
+                        <TableColumn prefWidth="158.0" text="Кол-во продуктов" />
+                        <TableColumn prefWidth="125.0" text="Стоимость" />
+                    </columns>
+                </TableView>
+            <Button mnemonicParsing="false" text="Назад" GridPane.columnIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+            </children>
+        </GridPane>
+    </children>
+</AnchorPane>
