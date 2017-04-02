@@ -1,7 +1,7 @@
 CREATE TABLE products
 (
   id      INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  barcode BLOB,
+  barcode INT (30),
   price   DOUBLE              NOT NULL,
   name    VARCHAR(250)        NOT NULL
 );
