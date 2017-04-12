@@ -6,25 +6,26 @@ import org.joda.money.Money;
  * @author Ilya_Bondarenko
  */
 public class Product extends BaseEntity {
+    public static final String currency = "KZT";
 
     private String name;
     private Money price;
-    private byte[] barcode;
+    private int barcode;
 
     public Product() {
     }
 
-    public Product(String name, Money price, byte[] barcode) {
+    public Product(String name, Money price,int barcode) {
         this.name = name;
         this.price = price;
         this.barcode = barcode;
     }
 
-    public byte[] getBarcode() {
+    public int getBarcode() {
         return barcode;
     }
 
-    public void setBarcode(byte[] barcode) {
+    public void setBarcode(int barcode) {
         this.barcode = barcode;
     }
 

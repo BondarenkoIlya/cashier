@@ -8,12 +8,13 @@ import org.joda.money.Money;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.sql.rowset.serial.SerialBlob;
 import java.io.IOException;
-import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -31,6 +32,7 @@ public class ProductDao extends DaoEntity implements Dao<Product> {
     private static final String UPDATE_PRODUCT = "UPDATE products SET barcode = ?, price = ? , name = ? WHERE id=?";
     private static final String DELETE_PRODUCT = "DELETE FROM products WHERE id = ?";
     private static final String FIND_PRODUCT_BY_BARCODE = "SELECT id,barcode,price,name FROM products WHERE barcode=?";
+    private static final String FIND_ALL_PRODUCTS = "SELECT * FROM products";
 
     public ProductDao() {
     }
@@ -64,7 +66,7 @@ public class ProductDao extends DaoEntity implements Dao<Product> {
                 product = pickProductFromResultSet(resultSet);
             }
             resultSet.close();
-            if (product.getId()==0){
+            if (product.getId() == 0) {
                 throw new DaoException("Have no product with id" + id);
             }
         } catch (SQLException e) {
@@ -73,16 +75,16 @@ public class ProductDao extends DaoEntity implements Dao<Product> {
         return product;
     }
 
-    public Product findByBarcode(byte[] barcode) throws DaoException {
+    public Product findByBarcode(int barcode) throws DaoException {
         Product product = new Product();
         try (PreparedStatement preparedStatement = getConnection().prepareStatement(FIND_PRODUCT_BY_BARCODE)) {
-            preparedStatement.setBlob(1, new SerialBlob(barcode));
+            preparedStatement.setInt(1, barcode);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 product = pickProductFromResultSet(resultSet);
             }
             resultSet.close();
-            if (product.getBarcode().length==0){
+            if (product.getBarcode() == 0) {
                 throw new DaoException("Have no product with this barcode ");// TODO important place
             }
         } catch (SQLException e) {
@@ -95,7 +97,7 @@ public class ProductDao extends DaoEntity implements Dao<Product> {
     public void update(Product product) throws DaoException {
         try (PreparedStatement preparedStatement = getConnection().prepareStatement(UPDATE_PRODUCT)) {
             setProductInPreparedStatement(product, preparedStatement);
-            preparedStatement.setInt(4,product.getId());
+            preparedStatement.setInt(4, product.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             LOG.error("Get exception while working with product updating on dao layer");
@@ -105,21 +107,34 @@ public class ProductDao extends DaoEntity implements Dao<Product> {
 
     @Override
     public void delete(Product product) throws DaoException {
-        try (PreparedStatement preparedStatement = getConnection().prepareStatement(DELETE_PRODUCT)){
-            preparedStatement.setInt(1,product.getId());
+        try (PreparedStatement preparedStatement = getConnection().prepareStatement(DELETE_PRODUCT)) {
+            preparedStatement.setInt(1, product.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new DaoException("Cannot get connection for deleting product", e);
         }
     }
 
+    public List<Product> findAll() throws DaoException {
+        List<Product> products = new ArrayList<>();
+        try (Statement statement = getConnection().createStatement()) {
+            ResultSet resultSet = statement.executeQuery(FIND_ALL_PRODUCTS);
+            while (resultSet.next()){
+                products.add(pickProductFromResultSet(resultSet));
+            }
+        } catch (SQLException e) {
+            throw new DaoException("Cannot find all products", e);
+        }
+        return products;
+    }
+
     private Product pickProductFromResultSet(ResultSet resultSet) throws DaoException {
         Product product = new Product();
         try {
             product.setId(resultSet.getInt(1));
-            Blob barcode = resultSet.getBlob(2);
-            product.setBarcode(barcode.getBytes(1, (int) barcode.length()));
+            product.setBarcode(resultSet.getInt(2));
             product.setPrice(Money.of(CurrencyUnit.of(getCurrency()), resultSet.getDouble(3)));
+            product.setName(resultSet.getString(4));
         } catch (SQLException e) {
             throw new DaoException("Cannot get product from result set", e);
         }
@@ -128,7 +143,7 @@ public class ProductDao extends DaoEntity implements Dao<Product> {
 
     private void setProductInPreparedStatement(Product product, PreparedStatement preparedStatement) throws DaoException {
         try {
-            preparedStatement.setBlob(1, new SerialBlob(product.getBarcode()));
+            preparedStatement.setInt(1, product.getBarcode());
             preparedStatement.setDouble(2, product.getPrice().getAmount().doubleValue());
             preparedStatement.setString(3, product.getName());
         } catch (SQLException e) {
