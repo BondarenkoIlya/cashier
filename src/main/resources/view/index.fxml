@@ -32,7 +32,7 @@
                   <Font size="19.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="Оплатить">
+            <Button fx:id="payAnOrderBttn" onAction="#payAnOrderAction" mnemonicParsing="false" text="Оплатить">
                <GridPane.margin>
                   <Insets left="300.0" />
                </GridPane.margin>
@@ -40,14 +40,14 @@
                   <Font size="19.0" />
                </font>
             </Button>
-            <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <TableView fx:id="tableOrder" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
               <columns>
-                <TableColumn prefWidth="258.0" text="Название" />
-                <TableColumn prefWidth="83.0" text="Колличество" />
-                  <TableColumn prefWidth="104.0" text="Цена" />
+                <TableColumn fx:id="columnName" prefWidth="258.0" text="Название" />
+                <TableColumn fx:id="columnNumber" prefWidth="83.0" text="Колличество" />
+                  <TableColumn fx:id="columnPrice" prefWidth="104.0" text="Цена" />
               </columns>
             </TableView>
-            <TextField editable="false" prefHeight="70.0" prefWidth="154.0" promptText="тенге" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="totalPriceLabel" editable="false" prefHeight="70.0" prefWidth="154.0" promptText="тенге" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="16.0" />
                </font>
