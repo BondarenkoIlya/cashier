@@ -2,7 +2,7 @@ package com.university.ilya.controller;
 
 import com.university.ilya.model.Order;
 import com.university.ilya.model.Product;
-import com.university.ilya.service.SceneManager;
+import com.university.ilya.manager.SceneManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;

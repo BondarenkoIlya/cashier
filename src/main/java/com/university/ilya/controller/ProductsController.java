@@ -1,7 +1,7 @@
 package com.university.ilya.controller;
 
 import com.university.ilya.model.Product;
-import com.university.ilya.service.DialogManager;
+import com.university.ilya.manager.DialogManager;
 import com.university.ilya.service.ProductService;
 import com.university.ilya.service.ServiceException;
 import javafx.beans.property.SimpleStringProperty;
