@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="com.university.ilya.controller.PayOrderController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="1.0" layoutY="1.0" prefHeight="400.0" prefWidth="600.0">
         <columnConstraints>
@@ -39,7 +39,7 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <Label text="тенге" GridPane.rowIndex="1">
+            <Label fx:id="totalPriceLabel" text="тенге" GridPane.rowIndex="1">
                <font>
                   <Font size="36.0" />
                </font>
@@ -47,7 +47,7 @@
                   <Insets left="70.0" top="30.0" />
                </GridPane.margin>
             </Label>
-            <Button mnemonicParsing="false" text="&lt; Назад">
+            <Button onAction="#backToIndexPage" mnemonicParsing="false" text="&lt; Назад">
                <font>
                   <Font size="20.0" />
                </font>
