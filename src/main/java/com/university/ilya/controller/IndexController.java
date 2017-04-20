@@ -1,8 +1,8 @@
 package com.university.ilya.controller;
 
+import com.university.ilya.manager.SceneManager;
 import com.university.ilya.model.Order;
 import com.university.ilya.model.Product;
-import com.university.ilya.manager.SceneManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -10,7 +10,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
@@ -28,7 +27,7 @@ import java.util.ResourceBundle;
 /**
  * @author Ilya_Bondarenko
  */
-public class IndexController implements Initializable {
+public class IndexController extends Controller {
     @FXML
     public TableView tableOrder;
     @FXML
@@ -42,7 +41,7 @@ public class IndexController implements Initializable {
 
     public ObservableList<Product> ordersProducts = FXCollections.observableArrayList();
     private FXMLLoader fxmlLoader = new FXMLLoader();
-    private Stage stage;
+    //private Stage stage;
     private Stage manualAddProductDialogStage;
     private ProductsController manualAddDialogController;
     private Parent fxmlProducts;
@@ -65,6 +64,7 @@ public class IndexController implements Initializable {
     }
 
     private void updateTotalPrice() {
+        totalPrice = 0;
         for (Product produst : ordersProducts) {
             totalPrice += produst.getPrice().getAmount().doubleValue();
         }
@@ -91,16 +91,16 @@ public class IndexController implements Initializable {
             manualAddProductDialogStage.setResizable(false);
             manualAddProductDialogStage.setScene(new Scene(fxmlProducts));
             manualAddProductDialogStage.initModality(Modality.WINDOW_MODAL);
-            manualAddProductDialogStage.initOwner(stage);
+            manualAddProductDialogStage.initOwner(getStage());
         }
         manualAddProductDialogStage.showAndWait();
     }
 
     public void payAnOrderAction(ActionEvent actionEvent) {
         Order order = pickOrder();
-        PayOrderController controller = (PayOrderController) SceneManager.changeLocation(stage, "/view/pay-page.fxml");
+        PayOrderController controller = (PayOrderController) SceneManager.changeLocation(getStage(), "/view/pay-page.fxml");
         controller.setOrder(order);
-        controller.setStage(stage);
+        controller.setStage(getStage());
         controller.setIndexScene(indexScene);
     }
 
@@ -109,10 +109,6 @@ public class IndexController implements Initializable {
         order.setProducts(ordersProducts);
         order.setTotalPrice(Money.of(CurrencyUnit.of(Product.currency) ,totalPrice));
         return order;
-    }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
     }
 
     public void setIndexScene(Scene indexScene) {

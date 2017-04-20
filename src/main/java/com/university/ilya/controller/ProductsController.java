@@ -1,7 +1,7 @@
 package com.university.ilya.controller;
 
-import com.university.ilya.model.Product;
 import com.university.ilya.manager.DialogManager;
+import com.university.ilya.model.Product;
 import com.university.ilya.service.ProductService;
 import com.university.ilya.service.ServiceException;
 import javafx.beans.property.SimpleStringProperty;
@@ -10,7 +10,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -21,7 +20,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ProductsController implements Initializable {
+public class ProductsController extends Controller{
 
     private FXMLLoader fxmlLoader = new FXMLLoader();
 
@@ -39,8 +38,6 @@ public class ProductsController implements Initializable {
 
     @FXML
     private TableColumn<Product, String> columnBarcode;
-
-    private Stage stage;
 
     private ObservableList<Product> order;
 
@@ -79,10 +76,6 @@ public class ProductsController implements Initializable {
             return false;
         }
         return true;
-    }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
     }
 
     public void setOrder(ObservableList<Product> order) {

@@ -1,39 +1,35 @@
 package com.university.ilya.controller;
 
+import com.university.ilya.manager.DialogManager;
+import com.university.ilya.manager.SceneManager;
 import com.university.ilya.model.Order;
+import com.university.ilya.service.OrderService;
+import com.university.ilya.service.ServiceException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PayOrderController implements Initializable {
-    @FXML
-    public Label totalPriceLabel;
-    private Stage stage;
+public class PayOrderController extends Controller {
     private Order order;
     private Parent indexRoot;
     private Scene indexScene;
 
+    @FXML
+    public Label totalPriceLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
 
     public void backToIndexPage(ActionEvent actionEvent) {
-        stage.setScene(indexScene);
-        stage.show();
+        getStage().setScene(indexScene);
+        getStage().show();
     }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
 
     public void setOrder(Order order) {
         this.order = order;
@@ -46,5 +42,16 @@ public class PayOrderController implements Initializable {
 
     public void setIndexScene(Scene indexScene) {
         this.indexScene = indexScene;
+    }
+
+    public void payOrderAction(ActionEvent actionEvent) {
+        OrderService orderService = new OrderService();
+        try {
+            orderService.saveOrder(order);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
+        DialogManager.showInfoDialog("Successful","Take you're check" );
+        SceneManager.changeLocation(getStage(),"/view/index.fxml");
     }
 }
