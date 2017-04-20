@@ -23,7 +23,7 @@
           <RowConstraints maxHeight="183.0" minHeight="10.0" prefHeight="180.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" text="Оплатить" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button onAction="#payOrderAction" mnemonicParsing="false" text="Оплатить" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="39.0" />
                </font>

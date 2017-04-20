@@ -36,7 +36,7 @@ public class ProductService {
                 throw new ServiceException("Cannot get all products", e);
             }
         } catch (DaoException e) {
-            throw new ServiceException("Cannot get create dao factory", e);
+            throw new ServiceException("Cannot create dao factory", e);
         }
         return allProducts;
     }
