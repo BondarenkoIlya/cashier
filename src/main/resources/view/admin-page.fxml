@@ -20,7 +20,7 @@
           <RowConstraints maxHeight="351.0" minHeight="10.0" prefHeight="351.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" text="&lt; Назад">
+            <Button onAction="#backToWorkAction" mnemonicParsing="false" text="&lt; Назад">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
@@ -28,7 +28,7 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="Ввод закупов" GridPane.rowIndex="1">
+            <Button onAction="#showInterConsignmentsAction" mnemonicParsing="false" text="Ввод закупов" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="100.0" left="20.0" />
                </GridPane.margin>
@@ -36,7 +36,7 @@
                   <Font size="30.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="Снятие наличных" GridPane.rowIndex="1">
+            <Button onAction="#showConsignmentsListPageAction" mnemonicParsing="false" text="Список закупов" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="20.0" top="50.0" />
                </GridPane.margin>
@@ -44,7 +44,7 @@
                   <Font size="30.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="Список чеков" GridPane.rowIndex="1">
+            <Button onAction="#showOrderListPageAction" mnemonicParsing="false" text="Список чеков" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="250.0" left="20.0" />
                </GridPane.margin>
@@ -52,7 +52,7 @@
                   <Font size="30.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="Продукты в наличии" GridPane.rowIndex="1">
+            <Button onAction="#showProductsPageAction" mnemonicParsing="false" text="Продукты в наличии" GridPane.rowIndex="1">
                <font>
                   <Font size="30.0" />
                </font>

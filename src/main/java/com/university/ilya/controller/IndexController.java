@@ -41,9 +41,8 @@ public class IndexController extends Controller {
 
     public ObservableList<Product> ordersProducts = FXCollections.observableArrayList();
     private FXMLLoader fxmlLoader = new FXMLLoader();
-    //private Stage stage;
     private Stage manualAddProductDialogStage;
-    private ProductsController manualAddDialogController;
+    private ManualProductsInsertController manualAddDialogController;
     private Parent fxmlProducts;
     private double totalPrice;
     private Scene indexScene;
