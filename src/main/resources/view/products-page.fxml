@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="com.university.ilya.controller.ProductsPageController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <GridPane prefHeight="400.0" prefWidth="600.0">
             <columnConstraints>
@@ -31,14 +31,14 @@
                         <Insets left="20.0" />
                     </GridPane.margin>
                 </Label>
-                <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                <TableView fx:id="tableProducts" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                     <columns>
-                        <TableColumn prefWidth="212.0" text="Название" />
-                        <TableColumn prefWidth="158.0" text="Кол-во продуктов" />
-                        <TableColumn prefWidth="125.0" text="Стоимость" />
+                        <TableColumn fx:id="columnName" prefWidth="212.0" text="Название" />
+                        <TableColumn fx:id="columnBarcode" prefWidth="158.0" text="Штрих код" />
+                        <TableColumn fx:id="columnPrice" prefWidth="125.0" text="Стоимость" />
                     </columns>
                 </TableView>
-            <Button mnemonicParsing="false" text="Назад" GridPane.columnIndex="1">
+            <Button onAction="#backToAdminPageAction" mnemonicParsing="false" text="Назад" GridPane.columnIndex="1">
                <font>
                   <Font size="20.0" />
                </font>

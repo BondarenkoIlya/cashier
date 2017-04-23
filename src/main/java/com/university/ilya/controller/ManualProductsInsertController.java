@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ProductsController extends Controller{
+public class ManualProductsInsertController extends Controller{
 
     private FXMLLoader fxmlLoader = new FXMLLoader();
 
