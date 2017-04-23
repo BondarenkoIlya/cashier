@@ -6,14 +6,16 @@ package com.university.ilya.model;
 public class Consignment extends BaseEntity {
 
     private Product product;
-    private int number;
+    private int numberInPackage;
+    private int actualNumber;
 
     public Consignment() {
     }
 
-    public Consignment(Product product, int number) {
+    public Consignment(Product product, int numberInPackage, int actualNumber) {
         this.product = product;
-        this.number = number;
+        this.numberInPackage = numberInPackage;
+        this.actualNumber = actualNumber;
     }
 
     public Product getProduct() {
@@ -24,11 +26,19 @@ public class Consignment extends BaseEntity {
         this.product = product;
     }
 
-    public int getNumber() {
-        return number;
+    public int getNumberInPackage() {
+        return numberInPackage;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setNumberInPackage(int numberInPackage) {
+        this.numberInPackage = numberInPackage;
+    }
+
+    public int getActualNumber() {
+        return actualNumber;
+    }
+
+    public void setActualNumber(int actualNumber) {
+        this.actualNumber = actualNumber;
     }
 }

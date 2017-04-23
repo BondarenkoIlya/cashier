@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="com.university.ilya.controller.InsertConsignmentController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <GridPane prefHeight="400.0" prefWidth="600.0">
             <columnConstraints>
@@ -22,7 +22,7 @@
                 <RowConstraints maxHeight="151.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Button mnemonicParsing="false" text="&lt; Назад" GridPane.rowIndex="2">
+                <Button onAction="#backToAdminPageAction" mnemonicParsing="false" text="&lt; Назад" GridPane.rowIndex="2">
                     <font>
                         <Font size="25.0" />
                     </font>
@@ -30,7 +30,7 @@
                         <Insets left="20.0" />
                     </GridPane.margin>
                 </Button>
-                <Button mnemonicParsing="false" text="Ввод" GridPane.rowIndex="2">
+                <Button onAction="#insertAction" mnemonicParsing="false" text="Ввод" GridPane.rowIndex="2">
                     <GridPane.margin>
                         <Insets left="490.0" right="20.0" />
                     </GridPane.margin>
@@ -46,7 +46,7 @@
                         <Insets left="20.0" />
                     </GridPane.margin>
                 </Label>
-                <TextField prefHeight="48.0" prefWidth="600.0" promptText="Штрихкод" GridPane.rowIndex="1">
+                <TextField fx:id="barcodeField" prefHeight="48.0" prefWidth="600.0" promptText="Штрихкод" GridPane.rowIndex="1">
                     <GridPane.margin>
                         <Insets left="20.0" right="20.0" top="70.0" />
                     </GridPane.margin>
@@ -54,7 +54,7 @@
                         <Font size="25.0" />
                     </font>
                 </TextField>
-                <TextField prefHeight="49.0" prefWidth="560.0" promptText="Колличество продуктов" GridPane.rowIndex="1">
+                <TextField fx:id="numberField" prefHeight="49.0" prefWidth="560.0" promptText="Колличество продуктов" GridPane.rowIndex="1">
                     <GridPane.margin>
                         <Insets bottom="80.0" left="20.0" right="20.0" top="30.0" />
                     </GridPane.margin>
@@ -62,7 +62,7 @@
                         <Font size="25.0" />
                     </font>
                 </TextField>
-                <TextField prefHeight="49.0" prefWidth="435.0" promptText="Наименование продукта" GridPane.rowIndex="1">
+                <TextField fx:id="productField" prefHeight="49.0" prefWidth="435.0" promptText="Наименование продукта" GridPane.rowIndex="1">
                     <GridPane.margin>
                         <Insets bottom="170.0" left="20.0" right="20.0" />
                     </GridPane.margin>
@@ -70,7 +70,7 @@
                         <Font size="25.0" />
                     </font>
                 </TextField>
-            <TextField prefHeight="48.0" prefWidth="600.0" promptText="Цена" GridPane.rowIndex="1">
+            <TextField fx:id="priceField" prefHeight="48.0" prefWidth="600.0" promptText="Цена" GridPane.rowIndex="1">
                <font>
                   <Font size="25.0" />
                </font>
