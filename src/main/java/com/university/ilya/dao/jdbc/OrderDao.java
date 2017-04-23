@@ -3,18 +3,16 @@ package com.university.ilya.dao.jdbc;
 import com.university.ilya.dao.Dao;
 import com.university.ilya.dao.DaoException;
 import com.university.ilya.model.Order;
+import com.university.ilya.model.Product;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.Properties;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Ilya_Bondarenko
@@ -23,13 +21,11 @@ public class OrderDao extends DaoEntity implements Dao<Order> {
 
     private static final Logger LOG = LoggerFactory.getLogger(ProductDao.class);
 
-    private static final String PROPERTIES_PATH = "application.properties";
-    private static final String CURRENCY = "currency";
-
     private static final String INSERT_ORDER = "INSERT INTO orders VALUE (NULL ,?,?)";
     private static final String FIND_ORDER_BY_ID = "SELECT id, total_price, time FROM orders WHERE id = ?";
     private static final String UPDATE_ORDER = "UPDATE orders SET total_price = ?, time = ? WHERE id=?";
     private static final String DELETE_ORDER = "DELETE FROM orders WHERE id = ?";
+    private static final String GET_ALL_ORDERS = "SELECT * FROM orders";
 
     public OrderDao() {
     }
@@ -94,18 +90,29 @@ public class OrderDao extends DaoEntity implements Dao<Order> {
         }
     }
 
+    public List<Order> getAllOrders() throws DaoException {
+        List<Order> orders = new ArrayList<>();
+        try (Statement statement = getConnection().createStatement()){
+            ResultSet resultSet = statement.executeQuery(GET_ALL_ORDERS);
+            while (resultSet.next()) {
+                Order order = pickOrderFromResultSet(resultSet);
+                orders.add(order);
+            }
+            resultSet.close();
+        }catch (SQLException e) {
+            throw new DaoException("Cannot get all orders", e);
+        }
+        return orders;
+    }
+
     private Order pickOrderFromResultSet(ResultSet resultSet) throws DaoException {
         Order order = new Order();
-        Properties properties = new Properties();
         try {
-            properties.load(ProductDao.class.getClassLoader().getResourceAsStream(PROPERTIES_PATH));
             order.setId(resultSet.getInt(1));
-            order.setTotalPrice(Money.of(CurrencyUnit.of(properties.getProperty(CURRENCY)), resultSet.getDouble(2)));
+            order.setTotalPrice(Money.of(CurrencyUnit.of(Product.currency), resultSet.getDouble(2)));
             order.setTime(new DateTime(resultSet.getTimestamp(3)));
         } catch (SQLException e) {
             throw new DaoException("Cannot pick order from result set", e);
-        } catch (IOException e) {
-            throw new DaoException("Cannot load property for pick order from result set", e);
         }
         return order;
 

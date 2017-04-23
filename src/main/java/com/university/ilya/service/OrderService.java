@@ -6,6 +6,8 @@ import com.university.ilya.dao.jdbc.OrderDao;
 import com.university.ilya.model.Order;
 import org.joda.time.DateTime;
 
+import java.util.List;
+
 public class OrderService {
 
     public void saveOrder(Order order) throws ServiceException {
@@ -20,5 +22,21 @@ public class OrderService {
         } catch (DaoException e) {
             throw new ServiceException("Cannot create dao factory", e);
         }
+    }
+
+
+    public List<Order> getAllOrders() throws ServiceException {
+        List<Order> orders;
+        try (DaoFactory daoFactory = new DaoFactory()) {
+            try {
+                OrderDao dao = daoFactory.getDao(OrderDao.class);
+                orders = dao.getAllOrders();
+            }catch (DaoException e){
+                throw new ServiceException("Cannot get all orders", e);
+            }
+        } catch (DaoException e) {
+            throw new ServiceException("Cannot create dao factory", e);
+        }
+        return orders;
     }
 }

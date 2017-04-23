@@ -3,6 +3,7 @@ package com.university.ilya.controller;
 import com.university.ilya.manager.DialogManager;
 import com.university.ilya.manager.SceneManager;
 import com.university.ilya.model.Order;
+import com.university.ilya.service.ConsignmentService;
 import com.university.ilya.service.OrderService;
 import com.university.ilya.service.ServiceException;
 import javafx.event.ActionEvent;
@@ -46,8 +47,10 @@ public class PayOrderController extends Controller {
 
     public void payOrderAction(ActionEvent actionEvent) {
         OrderService orderService = new OrderService();
+        ConsignmentService consignmentService = new ConsignmentService();
         try {
             orderService.saveOrder(order);
+            consignmentService.subtractProducts(order);
         } catch (ServiceException e) {
             e.printStackTrace();
         }
