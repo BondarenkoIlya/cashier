@@ -1,7 +1,7 @@
 package com.university.ilya.service;
 
+import com.university.ilya.dao.AbstractDaoFactory;
 import com.university.ilya.dao.DaoException;
-import com.university.ilya.dao.jdbc.DaoFactory;
 import com.university.ilya.dao.jdbc.OrderDao;
 import com.university.ilya.model.Order;
 import org.joda.time.DateTime;
@@ -11,7 +11,7 @@ import java.util.List;
 public class OrderService {
 
     public void saveOrder(Order order) throws ServiceException {
-        try (DaoFactory daoFactory = new DaoFactory()) {
+        try (AbstractDaoFactory daoFactory = AbstractDaoFactory.getDaoFactory()) {
             try {
                 OrderDao dao = daoFactory.getDao(OrderDao.class);
                 order.setTime(DateTime.now());
@@ -27,7 +27,7 @@ public class OrderService {
 
     public List<Order> getAllOrders() throws ServiceException {
         List<Order> orders;
-        try (DaoFactory daoFactory = new DaoFactory()) {
+        try (AbstractDaoFactory daoFactory = AbstractDaoFactory.getDaoFactory()) {
             try {
                 OrderDao dao = daoFactory.getDao(OrderDao.class);
                 orders = dao.getAllOrders();

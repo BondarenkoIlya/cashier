@@ -22,5 +22,5 @@ public abstract class AbstractDaoFactory implements AutoCloseable {
 
 
     @Override
-    public abstract void close() throws Exception;
+    public abstract void close() throws DaoException;
 }

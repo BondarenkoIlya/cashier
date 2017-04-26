@@ -1,8 +1,8 @@
 package com.university.ilya.service;
 
+import com.university.ilya.dao.AbstractDaoFactory;
 import com.university.ilya.dao.DaoException;
 import com.university.ilya.dao.jdbc.ConsignmentDao;
-import com.university.ilya.dao.jdbc.DaoFactory;
 import com.university.ilya.dao.jdbc.ProductDao;
 import com.university.ilya.model.Consignment;
 import com.university.ilya.model.Order;
@@ -13,7 +13,7 @@ import java.util.List;
 public class ConsignmentService {
 
     public void saveConsignment(Consignment consignment) throws ServiceException {
-        try (DaoFactory daoFactory = new DaoFactory()) {
+        try (AbstractDaoFactory daoFactory = AbstractDaoFactory.getDaoFactory()) {
             try {
                 ConsignmentDao consignmentDao = daoFactory.getDao(ConsignmentDao.class);
                 ProductDao productDao = daoFactory.getDao(ProductDao.class);
@@ -37,7 +37,7 @@ public class ConsignmentService {
 
     public List<Consignment> getAllConsignments() throws ServiceException {
         List<Consignment> consignments;
-        try (DaoFactory daoFactory = new DaoFactory()) {
+        try (AbstractDaoFactory daoFactory = AbstractDaoFactory.getDaoFactory()) {
             try {
                 ConsignmentDao consignmentDao = daoFactory.getDao(ConsignmentDao.class);
                 consignments = consignmentDao.getAllConsignments();
@@ -51,7 +51,7 @@ public class ConsignmentService {
     }
 
     public void subtractProducts(Order order) throws ServiceException {
-        try (DaoFactory daoFactory = new DaoFactory()) {
+        try (AbstractDaoFactory daoFactory = AbstractDaoFactory.getDaoFactory()) {
             try {
                 ConsignmentDao consignmentDao = daoFactory.getDao(ConsignmentDao.class);
                 for (Product product : order.getProducts()) {

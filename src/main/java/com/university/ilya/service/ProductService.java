@@ -1,7 +1,7 @@
 package com.university.ilya.service;
 
+import com.university.ilya.dao.AbstractDaoFactory;
 import com.university.ilya.dao.DaoException;
-import com.university.ilya.dao.jdbc.DaoFactory;
 import com.university.ilya.dao.jdbc.ProductDao;
 import com.university.ilya.model.Product;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class ProductService {
 
     public Product insertProduct(Product product) throws ServiceException {
-        try (DaoFactory daoFactory = new DaoFactory()) {
+        try (AbstractDaoFactory daoFactory = AbstractDaoFactory.getDaoFactory()) {
             try {
                 ProductDao dao = daoFactory.getDao(ProductDao.class);
                 product = dao.create(product);
@@ -28,7 +28,7 @@ public class ProductService {
 
     public List<Product> getAllProducts() throws ServiceException {
         List<Product> allProducts;
-        try (DaoFactory daoFactory = new DaoFactory()) {
+        try (AbstractDaoFactory daoFactory = AbstractDaoFactory.getDaoFactory()) {
             try {
                 ProductDao dao = daoFactory.getDao(ProductDao.class);
                 allProducts = dao.findAll();
