@@ -4,124 +4,140 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.university.ilya.controller.ManualProductsInsertController">
-   <children>
-      <GridPane layoutX="1.0" prefHeight="400.0" prefWidth="600.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="444.0" minWidth="10.0" prefWidth="338.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="262.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="323.0" minHeight="10.0" prefHeight="323.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Button fx:id="addProductToOrderBttn" mnemonicParsing="false" onAction="#addProductToOrderAction" prefHeight="69.0" prefWidth="114.0" text="Добавить">
-               <GridPane.margin>
-                  <Insets left="200.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Button>
-            <TableView fx:id="tableProducts" prefHeight="313.0" prefWidth="374.0" GridPane.rowIndex="1">
-               <placeholder>
-                  <Label text="Не найдено продуктов с таким штрих кодом">
-                     <font>
-                        <Font size="15" />
-                     </font>
-                  </Label>
-               </placeholder>
-               <columns>
-                <TableColumn fx:id="columnName" prefWidth="116.0" text="Название" />
-                <TableColumn fx:id="columnPrice" prefWidth="72.0" text="Цена" />
-                  <TableColumn fx:id="columnBarcode" prefWidth="139.0" text="Штрих код" />
-              </columns>
-               <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" />
-               </GridPane.margin>
-            </TableView>
-            <Button onAction="#backToIndexPage" mnemonicParsing="false" text="&lt; Назад">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Button>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <children>
-                  <Button onAction="#inputNumberAction" layoutX="34.0" layoutY="65.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="65.0" text="1">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Button>
-                  <Button onAction="#inputNumberAction" layoutX="99.0" layoutY="65.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="65.0" text="2">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Button>
-                  <Button onAction="#inputNumberAction" layoutX="164.0" layoutY="65.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="65.0" text="3">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Button>
-                  <Button onAction="#inputNumberAction" layoutX="34.0" layoutY="126.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="65.0" text="4">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Button>
-                  <Button onAction="#inputNumberAction" layoutX="99.0" layoutY="126.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="65.0" text="5">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Button>
-                  <Button onAction="#inputNumberAction" layoutX="164.0" layoutY="126.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="65.0" text="6">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Button>
-                  <Button onAction="#inputNumberAction" layoutX="34.0" layoutY="187.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="65.0" text="7">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Button>
-                  <Button onAction="#inputNumberAction" layoutX="99.0" layoutY="187.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="65.0" text="8">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Button>
-                  <Button onAction="#inputNumberAction" layoutX="164.0" layoutY="187.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="65.0" text="9">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Button>
-                  <Button onAction="#inputNumberAction" layoutX="99.0" layoutY="248.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="65.0" text="0">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Button>
-                  <Button onAction="#findByBarcodeAction" layoutX="27.0" layoutY="-8.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="104.0" text="Найти">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Button>
-                  <Button onAction="#deleteLastCharacter" layoutX="132.0" layoutY="-8.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="104.0" text="&lt;&lt;&lt;">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Button>
-               </children>
-            </Pane>
-            <TextField fx:id="barcodeTextField" editable="false" prefHeight="36.0" prefWidth="252.0" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets left="5.0" right="5.0" top="10.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </TextField>
-         </children>
-      </GridPane>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.university.ilya.controller.ManualProductsInsertController">
+    <children>
+        <GridPane layoutX="1.0" prefHeight="400.0" prefWidth="600.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="444.0" minWidth="10.0" prefWidth="338.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="262.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="323.0" minHeight="10.0" prefHeight="323.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Button fx:id="addProductToOrderBttn" mnemonicParsing="false" onAction="#addProductToOrderAction"
+                        prefHeight="69.0" prefWidth="114.0" text="Добавить">
+                    <GridPane.margin>
+                        <Insets left="200.0"/>
+                    </GridPane.margin>
+                    <font>
+                        <Font size="17.0"/>
+                    </font>
+                </Button>
+                <TableView fx:id="tableProducts" prefHeight="313.0" prefWidth="374.0" GridPane.rowIndex="1">
+                    <placeholder>
+                        <Label text="Не найдено продуктов с таким штрих кодом">
+                            <font>
+                                <Font size="15"/>
+                            </font>
+                        </Label>
+                    </placeholder>
+                    <columns>
+                        <TableColumn fx:id="columnName" prefWidth="116.0" text="Название"/>
+                        <TableColumn fx:id="columnPrice" prefWidth="72.0" text="Цена"/>
+                        <TableColumn fx:id="columnBarcode" prefWidth="139.0" text="Штрих код"/>
+                    </columns>
+                    <GridPane.margin>
+                        <Insets bottom="10.0" left="10.0"/>
+                    </GridPane.margin>
+                </TableView>
+                <Button onAction="#backToIndexPage" mnemonicParsing="false" text="&lt; Назад">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="10.0"/>
+                    </GridPane.margin>
+                </Button>
+                <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <children>
+                        <Button onAction="#inputNumberAction" layoutX="34.0" layoutY="65.0" mnemonicParsing="false"
+                                prefHeight="61.0" prefWidth="65.0" text="1">
+                            <font>
+                                <Font size="31.0"/>
+                            </font>
+                        </Button>
+                        <Button onAction="#inputNumberAction" layoutX="99.0" layoutY="65.0" mnemonicParsing="false"
+                                prefHeight="61.0" prefWidth="65.0" text="2">
+                            <font>
+                                <Font size="31.0"/>
+                            </font>
+                        </Button>
+                        <Button onAction="#inputNumberAction" layoutX="164.0" layoutY="65.0" mnemonicParsing="false"
+                                prefHeight="61.0" prefWidth="65.0" text="3">
+                            <font>
+                                <Font size="31.0"/>
+                            </font>
+                        </Button>
+                        <Button onAction="#inputNumberAction" layoutX="34.0" layoutY="126.0" mnemonicParsing="false"
+                                prefHeight="61.0" prefWidth="65.0" text="4">
+                            <font>
+                                <Font size="31.0"/>
+                            </font>
+                        </Button>
+                        <Button onAction="#inputNumberAction" layoutX="99.0" layoutY="126.0" mnemonicParsing="false"
+                                prefHeight="61.0" prefWidth="65.0" text="5">
+                            <font>
+                                <Font size="31.0"/>
+                            </font>
+                        </Button>
+                        <Button onAction="#inputNumberAction" layoutX="164.0" layoutY="126.0" mnemonicParsing="false"
+                                prefHeight="61.0" prefWidth="65.0" text="6">
+                            <font>
+                                <Font size="31.0"/>
+                            </font>
+                        </Button>
+                        <Button onAction="#inputNumberAction" layoutX="34.0" layoutY="187.0" mnemonicParsing="false"
+                                prefHeight="61.0" prefWidth="65.0" text="7">
+                            <font>
+                                <Font size="31.0"/>
+                            </font>
+                        </Button>
+                        <Button onAction="#inputNumberAction" layoutX="99.0" layoutY="187.0" mnemonicParsing="false"
+                                prefHeight="61.0" prefWidth="65.0" text="8">
+                            <font>
+                                <Font size="31.0"/>
+                            </font>
+                        </Button>
+                        <Button onAction="#inputNumberAction" layoutX="164.0" layoutY="187.0" mnemonicParsing="false"
+                                prefHeight="61.0" prefWidth="65.0" text="9">
+                            <font>
+                                <Font size="31.0"/>
+                            </font>
+                        </Button>
+                        <Button onAction="#inputNumberAction" layoutX="99.0" layoutY="248.0" mnemonicParsing="false"
+                                prefHeight="61.0" prefWidth="65.0" text="0">
+                            <font>
+                                <Font size="31.0"/>
+                            </font>
+                        </Button>
+                        <Button onAction="#findByBarcodeAction" layoutX="27.0" layoutY="-8.0" mnemonicParsing="false"
+                                prefHeight="44.0" prefWidth="104.0" text="Найти">
+                            <font>
+                                <Font size="22.0"/>
+                            </font>
+                        </Button>
+                        <Button onAction="#deleteLastCharacter" layoutX="132.0" layoutY="-8.0" mnemonicParsing="false"
+                                prefHeight="44.0" prefWidth="104.0" text="&lt;&lt;&lt;">
+                            <font>
+                                <Font size="22.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </Pane>
+                <TextField fx:id="barcodeTextField" editable="false" prefHeight="36.0" prefWidth="252.0"
+                           GridPane.columnIndex="1">
+                    <GridPane.margin>
+                        <Insets left="5.0" right="5.0" top="10.0"/>
+                    </GridPane.margin>
+                    <font>
+                        <Font size="19.0"/>
+                    </font>
+                </TextField>
+            </children>
+        </GridPane>
+    </children>
 </AnchorPane>

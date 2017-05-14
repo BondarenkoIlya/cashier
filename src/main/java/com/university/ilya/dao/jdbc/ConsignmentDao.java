@@ -50,7 +50,7 @@ public class ConsignmentDao extends DaoEntity implements Dao<Consignment> {
             throw new DaoException("Cannot create statement for creating new comment", e);
         }
         return consignment;
-        }
+    }
 
     @Override
     public Consignment findById(int id) throws DaoException {
@@ -75,7 +75,7 @@ public class ConsignmentDao extends DaoEntity implements Dao<Consignment> {
     public void update(Consignment consignment) throws DaoException {
         try (PreparedStatement preparedStatement = getConnection().prepareStatement(UPDATE_CONSIGNMENT)) {
             setConsignmentInPreparedStatement(consignment, preparedStatement);
-            preparedStatement.setInt(3,consignment.getId());
+            preparedStatement.setInt(3, consignment.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             LOG.error("Get exception while working with consignment updating on dao layer");
@@ -85,7 +85,7 @@ public class ConsignmentDao extends DaoEntity implements Dao<Consignment> {
 
     public List<Consignment> getAllConsignments() throws DaoException {
         List<Consignment> consignments = new ArrayList<>();
-        try (Statement statement= getConnection().createStatement()) {
+        try (Statement statement = getConnection().createStatement()) {
             ResultSet resultSet = statement.executeQuery(GET_ALL_CONSIGNMENTS_WITH_PRODUCT);
             while (resultSet.next()) {
                 Consignment consignment = pickConsignmentFromResultSet(resultSet);
@@ -110,8 +110,8 @@ public class ConsignmentDao extends DaoEntity implements Dao<Consignment> {
 
     @Override
     public void delete(Consignment consignment) throws DaoException {
-        try (PreparedStatement preparedStatement = getConnection().prepareStatement(DELETE_CONSIGNMENT)){
-            preparedStatement.setInt(1,consignment.getId());
+        try (PreparedStatement preparedStatement = getConnection().prepareStatement(DELETE_CONSIGNMENT)) {
+            preparedStatement.setInt(1, consignment.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new DaoException("Cannot get connection for deleting consignment", e);
@@ -119,11 +119,11 @@ public class ConsignmentDao extends DaoEntity implements Dao<Consignment> {
     }
 
     public void decreaseActualNumber(Product product) throws DaoException {
-        try(PreparedStatement statement = getConnection().prepareStatement(DECREASE_ACTUAL_NUMBER)) {
-            statement.setInt(1,product.getId());
+        try (PreparedStatement statement = getConnection().prepareStatement(DECREASE_ACTUAL_NUMBER)) {
+            statement.setInt(1, product.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new DaoException("Cannot decrease actual number of products",e);
+            throw new DaoException("Cannot decrease actual number of products", e);
         }
     }
 
@@ -134,7 +134,7 @@ public class ConsignmentDao extends DaoEntity implements Dao<Consignment> {
             consignment.setNumberInPackage(resultSet.getInt(2));
             consignment.setActualNumber(resultSet.getInt(3));
         } catch (SQLException e) {
-            throw new DaoException("Cannot pick consignment from result set",e);
+            throw new DaoException("Cannot pick consignment from result set", e);
         }
         return consignment;
     }
@@ -143,7 +143,7 @@ public class ConsignmentDao extends DaoEntity implements Dao<Consignment> {
         try {
             preparedStatement.setInt(1, consignment.getNumberInPackage());
             preparedStatement.setInt(2, consignment.getActualNumber());
-            preparedStatement.setInt(3,consignment.getProduct().getId());
+            preparedStatement.setInt(3, consignment.getProduct().getId());
         } catch (SQLException e) {
             throw new DaoException("Cannot set consignment into prepared statement", e);
         }

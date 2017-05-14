@@ -16,7 +16,7 @@ public class OrderService {
                 OrderDao dao = daoFactory.getDao(OrderDao.class);
                 order.setTime(DateTime.now());
                 dao.create(order);
-            }catch (DaoException e){
+            } catch (DaoException e) {
                 throw new ServiceException("Cannot create new order", e);
             }
         } catch (DaoException e) {
@@ -31,7 +31,7 @@ public class OrderService {
             try {
                 OrderDao dao = daoFactory.getDao(OrderDao.class);
                 orders = dao.getAllOrders();
-            }catch (DaoException e){
+            } catch (DaoException e) {
                 throw new ServiceException("Cannot get all orders", e);
             }
         } catch (DaoException e) {

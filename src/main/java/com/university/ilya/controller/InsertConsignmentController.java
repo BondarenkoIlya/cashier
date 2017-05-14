@@ -48,7 +48,7 @@ public class InsertConsignmentController extends Controller {
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        DialogManager.showInfoDialog("Successful","Закуп успешно введен");
+        DialogManager.showInfoDialog("Successful", "Закуп успешно введен");
         SceneManager.changeLocation(getStage(), "/view/admin-page.fxml");
     }
 }

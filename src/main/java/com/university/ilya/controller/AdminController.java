@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 public class AdminController extends Controller {
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         SceneManager.changeLocation(primaryStage, "/view/index.fxml");
-        primaryStage.addEventHandler( KeyEvent.KEY_PRESSED, event -> {
+        primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             if (KeyCode.ESCAPE == event.getCode()) {
                 SceneManager.changeLocation(primaryStage, "/view/admin-page.fxml");
             }

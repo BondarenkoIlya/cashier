@@ -2,7 +2,7 @@
 
 <configuration>
 
-    <property name="DEV_HOME" value="c:/logs" />
+    <property name="DEV_HOME" value="c:/logs"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -52,12 +52,12 @@
 
     <logger name="com.university.ilya" level="debug"
             additivity="false">
-        <appender-ref ref="FILE-AUDIT" />
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE-AUDIT"/>
+        <appender-ref ref="STDOUT"/>
     </logger>
 
     <root level="error">
-        <appender-ref ref="FILE-ERROR" />
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE-ERROR"/>
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

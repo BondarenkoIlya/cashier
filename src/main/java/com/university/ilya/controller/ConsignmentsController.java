@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ConsignmentsController extends Controller {
-
     @FXML
     public TableView tableConsignments;
     @FXML
@@ -28,10 +27,12 @@ public class ConsignmentsController extends Controller {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        columnActualNumber.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getActualNumber())));
-        columnNumberInPackage.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getNumberInPackage())));
-        columnProductName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getProduct().getName()));
-
+        columnActualNumber.setCellValueFactory(param ->
+                new SimpleStringProperty(String.valueOf(param.getValue().getActualNumber())));
+        columnNumberInPackage.setCellValueFactory(param ->
+                new SimpleStringProperty(String.valueOf(param.getValue().getNumberInPackage())));
+        columnProductName.setCellValueFactory(param ->
+                new SimpleStringProperty(param.getValue().getProduct().getName()));
         initConsignmentList();
     }
 

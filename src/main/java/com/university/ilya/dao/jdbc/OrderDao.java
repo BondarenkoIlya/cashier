@@ -72,7 +72,7 @@ public class OrderDao extends DaoEntity implements Dao<Order> {
     public void update(Order order) throws DaoException {
         try (PreparedStatement preparedStatement = getConnection().prepareStatement(UPDATE_ORDER)) {
             setOrderInPreparedStatement(order, preparedStatement);
-            preparedStatement.setInt(3,order.getId());
+            preparedStatement.setInt(3, order.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             LOG.error("Get exception while working with order updating on dao layer");
@@ -82,8 +82,8 @@ public class OrderDao extends DaoEntity implements Dao<Order> {
 
     @Override
     public void delete(Order order) throws DaoException {
-        try (PreparedStatement preparedStatement = getConnection().prepareStatement(DELETE_ORDER)){
-            preparedStatement.setInt(1,order.getId());
+        try (PreparedStatement preparedStatement = getConnection().prepareStatement(DELETE_ORDER)) {
+            preparedStatement.setInt(1, order.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new DaoException("Cannot get connection for deleting product", e);
@@ -92,14 +92,14 @@ public class OrderDao extends DaoEntity implements Dao<Order> {
 
     public List<Order> getAllOrders() throws DaoException {
         List<Order> orders = new ArrayList<>();
-        try (Statement statement = getConnection().createStatement()){
+        try (Statement statement = getConnection().createStatement()) {
             ResultSet resultSet = statement.executeQuery(GET_ALL_ORDERS);
             while (resultSet.next()) {
                 Order order = pickOrderFromResultSet(resultSet);
                 orders.add(order);
             }
             resultSet.close();
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DaoException("Cannot get all orders", e);
         }
         return orders;
@@ -120,10 +120,10 @@ public class OrderDao extends DaoEntity implements Dao<Order> {
 
     private void setOrderInPreparedStatement(Order order, PreparedStatement preparedStatement) throws DaoException {
         try {
-            preparedStatement.setDouble(1,order.getTotalPrice().getAmount().doubleValue());
+            preparedStatement.setDouble(1, order.getTotalPrice().getAmount().doubleValue());
             preparedStatement.setTimestamp(2, new Timestamp(order.getTime().getMillis()));
         } catch (SQLException e) {
-            throw new DaoException("Cannot set order in statement",e);
+            throw new DaoException("Cannot set order in statement", e);
         }
     }
 }

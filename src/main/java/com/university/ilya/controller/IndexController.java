@@ -85,8 +85,8 @@ public class IndexController extends Controller {
         manualAddDialogController.setOrder(ordersProducts);
         if (manualAddProductDialogStage == null) {
             manualAddProductDialogStage = new Stage();
-            manualAddProductDialogStage.setMinHeight(600);
-            manualAddProductDialogStage.setMinWidth(800);
+            manualAddProductDialogStage.setMinHeight(400);
+            manualAddProductDialogStage.setMinWidth(600);
             manualAddProductDialogStage.setResizable(false);
             manualAddProductDialogStage.setScene(new Scene(fxmlProducts));
             manualAddProductDialogStage.initModality(Modality.WINDOW_MODAL);
@@ -97,6 +97,7 @@ public class IndexController extends Controller {
 
     public void payAnOrderAction(ActionEvent actionEvent) {
         Order order = pickOrder();
+        indexScene = getStage().getScene();
         PayOrderController controller = (PayOrderController) SceneManager.changeLocation(getStage(), "/view/pay-page.fxml");
         controller.setOrder(order);
         controller.setStage(getStage());
@@ -106,11 +107,7 @@ public class IndexController extends Controller {
     private Order pickOrder() {
         Order order = new Order();
         order.setProducts(ordersProducts);
-        order.setTotalPrice(Money.of(CurrencyUnit.of(Product.currency) ,totalPrice));
+        order.setTotalPrice(Money.of(CurrencyUnit.of(Product.currency), totalPrice));
         return order;
-    }
-
-    public void setIndexScene(Scene indexScene) {
-        this.indexScene = indexScene;
     }
 }

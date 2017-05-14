@@ -9,7 +9,7 @@ import com.university.ilya.dao.jdbc.DaoFactory;
 public abstract class AbstractDaoFactory implements AutoCloseable {
 
     public static AbstractDaoFactory getDaoFactory() throws DaoException {
-            return new DaoFactory();
+        return new DaoFactory();
     }
 
     public abstract <T extends DaoEntity> T getDao(Class<T> clazz) throws DaoException;

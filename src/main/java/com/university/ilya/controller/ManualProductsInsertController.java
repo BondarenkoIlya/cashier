@@ -98,7 +98,7 @@ public class ManualProductsInsertController extends Controller {
 
     public void deleteLastCharacter(ActionEvent actionEvent) {
         String text = barcodeTextField.getText();
-        barcodeTextField.setText(text.substring(0,text.length()-1));
+        barcodeTextField.setText(text.substring(0, text.length() - 1));
     }
 
     public void inputNumberAction(ActionEvent actionEvent) {

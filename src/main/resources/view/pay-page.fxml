@@ -1,93 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:controller="com.university.ilya.controller.PayOrderController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <GridPane layoutX="1.0" layoutY="1.0" prefHeight="400.0" prefWidth="600.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="292.0" minHeight="10.0" prefHeight="169.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="183.0" minHeight="10.0" prefHeight="180.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Button onAction="#payOrderAction" mnemonicParsing="false" text="Оплатить" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font size="39.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="40.0" />
-               </GridPane.margin>
-            </Button>
-            <Label text="Общая стоимость" underline="true" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets bottom="100.0" left="20.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
-            <Label fx:id="totalPriceLabel" text="тенге" GridPane.rowIndex="1">
-               <font>
-                  <Font size="36.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="70.0" top="30.0" />
-               </GridPane.margin>
-            </Label>
-            <Button onAction="#backToIndexPage" mnemonicParsing="false" text="&lt; Назад">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin>
-            </Button>
-            <Label text="Внесенная сумма" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="19.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="100.0" left="20.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="тенге" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="36.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="70.0" top="30.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Сдача" underline="true" GridPane.rowIndex="2">
-               <font>
-                  <Font size="19.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="100.0" left="20.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="тенге" GridPane.rowIndex="2">
-               <font>
-                  <Font size="36.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="70.0" top="30.0" />
-               </GridPane.margin>
-            </Label>
-         </children>
-      </GridPane>
-   </children>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane fx:controller="com.university.ilya.controller.PayOrderController" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <GridPane layoutX="1.0" layoutY="1.0" prefHeight="400.0" prefWidth="600.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="292.0" minHeight="10.0" prefHeight="169.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="183.0" minHeight="10.0" prefHeight="180.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Button onAction="#payOrderAction" mnemonicParsing="false" text="Оплатить" GridPane.columnIndex="1"
+                        GridPane.rowIndex="2">
+                    <font>
+                        <Font size="39.0"/>
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="40.0"/>
+                    </GridPane.margin>
+                </Button>
+                <Label text="Общая стоимость" underline="true" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets bottom="100.0" left="20.0"/>
+                    </GridPane.margin>
+                    <font>
+                        <Font size="19.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="totalPriceLabel" text="тенге" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="70.0" top="30.0"/>
+                    </GridPane.margin>
+                </Label>
+                <Button onAction="#backToIndexPage" mnemonicParsing="false" text="&lt; Назад">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="20.0"/>
+                    </GridPane.margin>
+                </Button>
+                <Label text="Внесенная сумма" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="19.0"/>
+                    </font>
+                    <GridPane.margin>
+                        <Insets bottom="100.0" left="20.0"/>
+                    </GridPane.margin>
+                </Label>
+                <Label text="тенге" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="70.0" top="30.0"/>
+                    </GridPane.margin>
+                </Label>
+                <Label text="Сдача" underline="true" GridPane.rowIndex="2">
+                    <font>
+                        <Font size="19.0"/>
+                    </font>
+                    <GridPane.margin>
+                        <Insets bottom="100.0" left="20.0"/>
+                    </GridPane.margin>
+                </Label>
+                <Label text="тенге" GridPane.rowIndex="2">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="70.0" top="30.0"/>
+                    </GridPane.margin>
+                </Label>
+            </children>
+        </GridPane>
+    </children>
 </AnchorPane>

@@ -25,7 +25,7 @@ public class ConsignmentService {
                 }
                 consignmentDao.create(consignment);
                 daoFactory.commitTransaction();
-            }catch (DaoException e){
+            } catch (DaoException e) {
                 daoFactory.rollbackTransaction();
                 throw new ServiceException("Cannot create new consignment", e);
             }
@@ -41,7 +41,7 @@ public class ConsignmentService {
             try {
                 ConsignmentDao consignmentDao = daoFactory.getDao(ConsignmentDao.class);
                 consignments = consignmentDao.getAllConsignments();
-            }catch (DaoException e){
+            } catch (DaoException e) {
                 throw new ServiceException("Cannot get all consignments", e);
             }
         } catch (DaoException e) {
@@ -57,7 +57,7 @@ public class ConsignmentService {
                 for (Product product : order.getProducts()) {
                     consignmentDao.decreaseActualNumber(product);
                 }
-            }catch (DaoException e){
+            } catch (DaoException e) {
                 throw new ServiceException("Cannot get all consignments", e);
             }
         } catch (DaoException e) {

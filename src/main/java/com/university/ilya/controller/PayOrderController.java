@@ -54,7 +54,7 @@ public class PayOrderController extends Controller {
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        DialogManager.showInfoDialog("Successful","Take you're check" );
-        SceneManager.changeLocation(getStage(),"/view/index.fxml");
+        DialogManager.showInfoDialog("Операция завершена", "Возьмите свой чек! Всего хорошего");
+        SceneManager.changeLocation(getStage(), "/view/index.fxml");
     }
 }
