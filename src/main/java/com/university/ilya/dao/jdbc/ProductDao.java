@@ -105,9 +105,6 @@ public class ProductDao extends DaoEntity implements Dao<Product> {
                 product = pickProductFromResultSet(resultSet);
             }
             resultSet.close();
-            if (product.getBarcode() == 0) {
-                throw new DaoException("Have no product with this barcode ");// TODO important place
-            }
         } catch (SQLException e) {
             throw new DaoException("Cannot find product by barcode", e);
         }
