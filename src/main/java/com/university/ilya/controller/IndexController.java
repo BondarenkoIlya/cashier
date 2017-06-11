@@ -1,5 +1,6 @@
 package com.university.ilya.controller;
 
+import com.university.ilya.manager.DialogManager;
 import com.university.ilya.manager.SceneManager;
 import com.university.ilya.model.Order;
 import com.university.ilya.model.Product;
@@ -96,12 +97,16 @@ public class IndexController extends Controller {
     }
 
     public void payAnOrderAction(ActionEvent actionEvent) {
-        Order order = pickOrder();
-        indexScene = getStage().getScene();
-        PayOrderController controller = (PayOrderController) SceneManager.changeLocation(getStage(), "/view/pay-page.fxml");
-        controller.setOrder(order);
-        controller.setStage(getStage());
-        controller.setIndexScene(indexScene);
+        if (ordersProducts.isEmpty()){
+            DialogManager.showErrorDialog("Внимание!", "Ваша корзина пуста, просканируйте продукты");
+        }else {
+            Order order = pickOrder();
+            indexScene = getStage().getScene();
+            PayOrderController controller = (PayOrderController) SceneManager.changeLocation(getStage(), "/view/pay-page.fxml");
+            controller.setOrder(order);
+            controller.setStage(getStage());
+            controller.setIndexScene(indexScene);
+        }
     }
 
     private Order pickOrder() {
@@ -109,5 +114,24 @@ public class IndexController extends Controller {
         order.setProducts(ordersProducts);
         order.setTotalPrice(Money.of(CurrencyUnit.of(Product.currency), totalPrice));
         return order;
+    }
+
+    public void deleteItemAction(ActionEvent actionEvent) {
+        Product selectedProduct = (Product) tableOrder.getSelectionModel().getSelectedItem();
+        if (productIsSelected(selectedProduct)) {
+            ordersProducts.remove(selectedProduct);
+        }
+    }
+
+    private boolean productIsSelected(Product selectedProduct) {
+        if (selectedProduct == null) {
+            DialogManager.showErrorDialog("Внимание!", "Вы не выбрали продукт для удаления");
+            return false;
+        }
+        return true;
+    }
+
+    public void deleteAllItemsAction(ActionEvent actionEvent) {
+        ordersProducts.clear();
     }
 }
